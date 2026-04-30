@@ -34,7 +34,7 @@ const EXPERIENCES = [
   {
     period: '2024 — 2025',
     role: 'President',
-    org: "Students' Union, University of Saskatchewan",
+    org: "University of Saskatchewan Students' Union",
     description:
       'Doubled student engagement. Represented student interests across federal, provincial, and municipal governments. Board of Governors: Land & Facilities Committee, Audit & Finance Committee, Presidential Search Committee.',
     tags: ['Leadership', 'Governance'],
