@@ -1,47 +1,63 @@
+import { motion } from 'framer-motion'
 import SectionLabel from './SectionLabel'
-import { useInView } from '../hooks/useInView'
 
 const LINKS = [
   { label: 'Email', display: 'krunal@arcite-ai.com', href: 'mailto:krunal@arcite-ai.com' },
-  { label: 'LinkedIn', display: 'krunal-chavda-7877271b3', href: 'https://www.linkedin.com/in/krunal-chavda-7877271b3/', external: true },
+  { label: 'LinkedIn', display: 'krunal-chavda', href: 'https://www.linkedin.com/in/krunal-chavda-7877271b3/', external: true },
   { label: 'GitHub', display: 'krunal16-c', href: 'https://github.com/krunal16-c', external: true },
 ]
 
-export default function Contact() {
-  const [ref, inView] = useInView()
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
+}
 
+const stagger = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.1 } },
+}
+
+export default function Contact() {
   return (
-    <section id="connect" className="py-28 bg-paper dark:bg-stone-900">
+    <section id="connect" className="py-28 bg-paper dark:bg-stone-900 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <SectionLabel>Connect</SectionLabel>
-        <div
-          ref={ref}
-          className={`grid grid-cols-1 lg:grid-cols-2 gap-16 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-50px' }}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-16"
         >
-          <div>
-            <h2 className="font-display text-4xl lg:text-5xl font-semibold text-ink dark:text-stone-100 leading-[1.1] mb-6">
-              Let's build something worth building.
+          <motion.div variants={fadeUp}>
+            <h2 className="font-display text-4xl lg:text-5xl font-bold text-ink dark:text-stone-100 leading-[1.05] mb-6 tracking-tight">
+              Let's build something<br />
+              <span className="text-rust">worth building.</span>
             </h2>
-            <p className="font-sans text-lg text-muted dark:text-stone-400 leading-relaxed">
-              I'm interested in research collaborations, advisory work, speaking, and connecting with founders and researchers working at the intersection of AI and institutions.
+            <p className="font-sans text-base text-muted dark:text-stone-400 leading-relaxed max-w-sm">
+              Research collaborations, advisory work, speaking, and connecting with founders and researchers at the intersection of AI and institutions.
             </p>
-          </div>
-          <div className="flex flex-col justify-center">
+          </motion.div>
+
+          <motion.div variants={fadeUp} className="flex flex-col justify-center">
             {LINKS.map(({ label, display, href, external }) => (
-              <a
+              <motion.a
                 key={label}
                 href={href}
+                whileHover={{ x: 4 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 25 }}
                 {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                className="group flex items-center justify-between py-5 border-b border-warm dark:border-stone-800 hover:border-ink dark:hover:border-stone-500 transition-colors duration-200"
+                className="group flex items-center justify-between py-5 border-b border-warm dark:border-stone-800 hover:border-rust/30 dark:hover:border-rust/30 transition-colors duration-200"
               >
-                <span className="font-sans text-sm text-muted dark:text-stone-500">{label}</span>
-                <span className="font-sans text-sm text-ink dark:text-stone-300 group-hover:text-rust transition-colors duration-200">
+                <span className="font-sans text-[10px] tracking-[0.3em] uppercase text-muted/60 dark:text-stone-500">{label}</span>
+                <span className="font-sans text-sm text-ink dark:text-stone-300 group-hover:text-rust transition-colors duration-200 tracking-wide">
                   {display} →
                 </span>
-              </a>
+              </motion.a>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   )

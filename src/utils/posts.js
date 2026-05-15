@@ -29,9 +29,11 @@ export function getAllPosts() {
         excerpt: data.excerpt || '',
         tags: data.tags ? data.tags.split(',').map(t => t.trim()) : [],
         readTime: Math.max(1, Math.ceil(content.split(/\s+/).length / 200)),
+        published: data.published !== 'false',
         content,
       }
     })
+    .filter(p => p.published !== false)
     .sort((a, b) => new Date(b.date) - new Date(a.date))
 }
 

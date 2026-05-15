@@ -1,88 +1,108 @@
+import { motion } from 'framer-motion'
 import SectionLabel from './SectionLabel'
-import { useInView } from '../hooks/useInView'
 
-const VENTURES = [
+const STATS = [
+  { value: '400+', label: 'Tools Evaluated' },
+  { value: '87%', label: 'Search Complexity Reduction' },
+  { value: '95%+', label: 'Relevance Accuracy' },
+]
+
+const PILLARS = [
   {
-    slug: 'arcite',
-    location: 'Saskatoon, SK · Founded 2025',
-    name: 'Arcite-AI',
-    tagline: 'Organizations don\'t fail at AI adoption because of lack of tools. They fail because they don\'t know which tools apply to their context.',
-    body: 'Chief AI Officer strategy combined with Forward Deployed Engineering. Two-phase recommendation system across 400+ tools. 87% search complexity reduction, 95%+ relevance accuracy. We start with proven solutions and only build custom when existing tools fall short.',
-    pillars: [
-      { label: 'Discovery', stat: '400+ tools evaluated' },
-      { label: 'Deployment', stat: 'Forward Deployed Engineers' },
-      { label: 'Training', stat: 'Role-specific frameworks' },
-    ],
-    cta: { label: 'Work With Us', href: 'mailto:temperature6464@gmail.com' },
+    label: 'Discovery',
+    body: 'Two-phase AI recommendation system maps your context against 400+ evaluated tools.',
   },
   {
-    slug: 'zester',
-    location: 'Saskatoon, SK · Founded 2025',
-    name: 'Zester Data Studios',
-    tagline: 'AI and robotics companies can\'t get the training data they actually need. Real footage of mines, farms, factories, and daily life. That data doesn\'t exist anywhere to buy.',
-    body: 'Data infrastructure built as a three-stage production chain. Ore lets individuals monetize their footage. Crucible generates synthetic datasets with human expert validation. Forge delivers multilingual annotation through in-country workers. Sovereign infrastructure. Data never leaves the country.',
-    pillars: [
-      { label: 'Ore', stat: 'Individual data marketplace' },
-      { label: 'Crucible', stat: 'Synthetic generation + annotation' },
-      { label: 'Forge', stat: 'In-country multilingual labeling' },
-    ],
-    cta: { label: 'Learn More', href: 'https://zesterweb.vercel.app' },
+    label: 'Deployment',
+    body: 'Forward Deployed Engineers embedded directly into client environments to train, architect, implement, and validate AI systems at production scale.',
+  },
+  {
+    label: 'Training',
+    body: 'Role-specific AI learning frameworks. We meet people where they are.',
   },
 ]
 
-export default function Ventures() {
-  const [ref, inView] = useInView()
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] } },
+}
 
+const stagger = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.1 } },
+}
+
+export default function Ventures() {
   return (
-    <section id="ventures" className="py-28 bg-charcoal">
+    <section id="ventures" className="py-28 bg-charcoal overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <SectionLabel light>Ventures</SectionLabel>
-        <div
-          ref={ref}
-          className={`transition-all duration-700 ${
-            inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
+
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-50px' }}
         >
-          <div className="space-y-20">
-            {VENTURES.map((v) => (
-              <div key={v.slug}>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-start mb-10">
-                  <div>
-                    <p className="font-sans text-xs tracking-[0.3em] uppercase text-rust mb-5">
-                      {v.location}
-                    </p>
-                    <h2
-                      className="font-display font-semibold text-sand leading-[0.9] mb-8"
-                      style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}
-                    >
-                      {v.name}
-                    </h2>
-                    <p className="font-sans text-lg text-sand/60 leading-relaxed">{v.tagline}</p>
-                  </div>
-                  <div className="flex flex-col justify-center gap-6">
-                    <p className="font-sans text-base text-sand/50 leading-relaxed">{v.body}</p>
-                    <a
-                      href={v.cta.href}
-                      target={v.cta.href.startsWith('http') ? '_blank' : undefined}
-                      rel={v.cta.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      className="inline-flex items-center gap-2 w-fit font-sans text-sm text-rust border border-rust/35 px-6 py-3 hover:bg-rust hover:text-sand transition-all duration-200"
-                    >
-                      {v.cta.label} →
-                    </a>
-                  </div>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-sand/10">
-                  {v.pillars.map(({ label, stat }) => (
-                    <div key={label} className="bg-charcoal p-6 lg:p-8">
-                      <p className="font-sans text-xs tracking-[0.28em] uppercase text-rust/60 mb-3">{label}</p>
-                      <p className="font-display text-lg font-semibold text-sand">{stat}</p>
-                    </div>
-                  ))}
-                </div>
+          {/* Header */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-end mb-16">
+            <motion.div variants={fadeUp}>
+              <p className="font-sans text-[10px] tracking-[0.36em] uppercase text-rust mb-5">
+                Saskatoon, SK · Founded 2025
+              </p>
+              <h2
+                className="font-display font-extrabold text-sand leading-[0.9] tracking-tight"
+                style={{ fontSize: 'clamp(3rem, 7vw, 5.5rem)' }}
+              >
+                Arcite AI
+              </h2>
+            </motion.div>
+
+            <motion.div variants={fadeUp} className="flex flex-col gap-6">
+              <p className="font-sans text-base text-sand/50 leading-relaxed max-w-md">
+                Your Chief AI Officer + Forward Deployed Engineer. We find proven AI solutions or build custom ones when existing tools fall short.
+              </p>
+              <a
+                href="mailto:temperature6464@gmail.com"
+                className="inline-flex items-center gap-2 w-fit font-sans text-sm text-rust border border-rust/30 px-7 py-3.5 hover:bg-rust hover:text-sand transition-all duration-300 tracking-wide uppercase text-[11px]"
+              >
+                Work With Us →
+              </a>
+            </motion.div>
+          </div>
+
+          {/* Stats bar */}
+          <motion.div
+            variants={fadeUp}
+            className="grid grid-cols-3 gap-px bg-sand/[0.06] mb-16"
+          >
+            {STATS.map(({ value, label }) => (
+              <div key={label} className="bg-charcoal p-8 lg:p-10 group">
+                <p
+                  className="font-display font-extrabold text-sand tracking-tight mb-1"
+                  style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}
+                >
+                  {value}
+                </p>
+                <p className="font-sans text-xs text-sand/30 tracking-widest uppercase">{label}</p>
               </div>
             ))}
-          </div>
-        </div>
+          </motion.div>
+
+          {/* Three pillars */}
+          <motion.div variants={stagger} className="grid grid-cols-1 md:grid-cols-3 gap-px bg-sand/[0.06]">
+            {PILLARS.map(({ label, body }, i) => (
+              <motion.div
+                key={label}
+                variants={fadeUp}
+                className="bg-charcoal p-8 lg:p-10 border-t-2 border-t-transparent hover:border-t-rust transition-colors duration-300"
+              >
+                <h3 className="font-display text-xl font-bold text-sand mb-3 tracking-tight">{label}</h3>
+                <p className="font-sans text-sm text-sand/40 leading-relaxed">{body}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   )

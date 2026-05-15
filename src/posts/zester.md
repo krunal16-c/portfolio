@@ -3,6 +3,7 @@ title: The Data Problem Nobody Is Solving
 date: 2026-04-22
 excerpt: AI and robotics companies need real-world training data from mines, farms, and factories. That data exists. Nobody has built the supply chain to move it. That is what Zester Data Studios is for.
 tags: Ventures, Data
+published: false
 ---
 
 Every AI and robotics company I talk to has the same problem.
