@@ -130,3 +130,30 @@
 .stat-card:hover::after {
   right: 0;
 }
+
+/* Thin rust scrollbar */
+::-webkit-scrollbar {
+  width: 3px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(181, 69, 32, 0.2);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(181, 69, 32, 0.45);
+}
+
+/* Focus ring */
+:focus-visible {
+  outline: 2px solid rgba(181, 69, 32, 0.5);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+button:focus:not(:focus-visible),
+a:focus:not(:focus-visible) {
+  outline: none;
+}

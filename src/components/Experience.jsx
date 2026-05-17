@@ -77,12 +77,16 @@ export default function Experience() {
             <motion.div
               key={i}
               variants={rowVariant}
-              className="group grid grid-cols-1 lg:grid-cols-[160px_1fr] gap-4 lg:gap-14 py-10 border-b border-warm dark:border-stone-800 last:border-0"
+              className="group grid grid-cols-1 lg:grid-cols-[160px_1fr] gap-4 lg:gap-0 py-10 border-b border-warm dark:border-stone-800 last:border-0"
             >
-              <div className="pt-1">
-                <span className="font-sans text-xs text-muted/60 dark:text-stone-500 tabular-nums tracking-wide">{exp.period}</span>
+              <div className="pt-[0.85rem] lg:text-right lg:pr-8">
+                <span className="font-sans text-[11px] text-muted/45 dark:text-stone-500 tabular-nums tracking-wide">{exp.period}</span>
               </div>
-              <div>
+
+              <div className="relative lg:border-l lg:border-warm dark:border-stone-800 lg:pl-14">
+                {/* Timeline dot */}
+                <div className="hidden lg:block absolute -left-[5px] top-[0.85rem] w-2.5 h-2.5 rounded-full border border-warm dark:border-stone-700 bg-paper dark:bg-stone-900 group-hover:border-rust/70 group-hover:bg-rust/10 transition-all duration-300 z-10" />
+
                 <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
                   <div>
                     <h3 className="font-display text-2xl font-bold text-ink dark:text-stone-100 tracking-tight">{exp.role}</h3>

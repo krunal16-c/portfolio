@@ -126,44 +126,54 @@ export default function Hero() {
               </motion.p>
 
               {/* Clip-reveal name */}
-              <div aria-label="Krunal Chavda" className="mb-10">
+              <div aria-label="Krunal Chavda" className="mb-7">
                 <div
                   className="overflow-hidden block"
                   style={{
                     fontSize: 'clamp(3.2rem, 15vw, 10.5rem)',
-                    lineHeight: 1.22,
-                    marginBottom: '-0.12em',
+                    lineHeight: 1.1,
+                    marginBottom: '-0.06em',
                   }}
                 >
                   <motion.h1
-                    className="font-display font-extrabold text-sand block tracking-tight"
-                    style={{ lineHeight: 1.22 }}
+                    className="font-display font-bold tracking-tight text-sand block uppercase"
+                    style={{ lineHeight: 1.1 }}
                     initial={{ y: '110%' }}
                     animate={{ y: 0 }}
                     transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
                   >
-                    KRUNAL
+                    Krunal
                   </motion.h1>
                 </div>
                 <div
                   className="overflow-hidden block"
                   style={{
                     fontSize: 'clamp(3.2rem, 15vw, 10.5rem)',
-                    lineHeight: 1.22,
-                    marginBottom: '-0.12em',
+                    lineHeight: 1.1,
+                    marginBottom: '-0.06em',
                   }}
                 >
                   <motion.h1
-                    className="font-display font-extrabold text-rust block tracking-tight"
-                    style={{ lineHeight: 1.22 }}
+                    className="font-display font-extrabold tracking-tight text-rust block uppercase"
+                    style={{ lineHeight: 1.1 }}
                     initial={{ y: '110%' }}
                     animate={{ y: 0 }}
                     transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.08 }}
                   >
-                    CHAVDA
+                    Chavda
                   </motion.h1>
                 </div>
               </div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.55, delay: 0.38 }}
+                className="flex items-center gap-4 mb-7"
+              >
+                <div className="w-7 h-px bg-rust/60" />
+                <span className="font-sans text-[10px] text-sand/30 tracking-[0.3em] uppercase">AI Researcher · Founder · Builder</span>
+              </motion.div>
 
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -188,20 +198,8 @@ export default function Hero() {
               </motion.div>
             </div>
 
-            {/* Right — vertical tagline */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.7 }}
-              className="hidden lg:flex flex-col items-end gap-6 self-end pb-4"
-            >
-              <div className="writing-mode-vertical flex flex-col gap-2 items-end">
-                <p className="font-sans text-xs text-sand/25 tracking-[0.3em] uppercase" style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}>
-                  AI Researcher · Founder · Institutional Leader
-                </p>
-              </div>
-              <div className="w-px h-24 bg-gradient-to-b from-rust/40 to-transparent" />
-            </motion.div>
+            {/* Right — credibility stats */}
+            
 
           </div>
         </div>

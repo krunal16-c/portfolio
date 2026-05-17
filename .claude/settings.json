@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Skill(browse)",
-      "Skill(browse:*)"
+      "Skill(browse:*)",
+      "Read(//tmp/**)",
+      "Read(//private/tmp/**)"
     ]
   }
 }

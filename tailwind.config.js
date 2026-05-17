@@ -24,7 +24,7 @@ export default {
         warm: '#DDD5C8',
       },
       fontFamily: {
-        display: ['"Bricolage Grotesque"', 'system-ui', 'sans-serif'],
+        display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
         sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
       },
       animation: {

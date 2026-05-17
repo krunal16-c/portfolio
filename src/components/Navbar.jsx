@@ -91,7 +91,7 @@ export default function Navbar({ dark, onToggle }) {
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-16">
           <Link
             to="/"
-            className="font-display text-2xl font-semibold tracking-tight"
+            className="font-display text-2xl font-bold tracking-tight"
             onClick={() => { setMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
           >
             KC
@@ -103,12 +103,12 @@ export default function Navbar({ dark, onToggle }) {
               <button
                 key={id}
                 onClick={() => handleSection(id)}
-                className="font-sans text-sm tracking-wide hover:opacity-50 transition-opacity"
+                className="font-sans text-sm tracking-wide hover:text-rust transition-colors duration-200"
               >
                 {label}
               </button>
             ))}
-            <Link to="/blog" className="font-sans text-sm tracking-wide hover:opacity-50 transition-opacity">
+            <Link to="/blog" className="font-sans text-sm tracking-wide hover:text-rust transition-colors duration-200">
               Writing
             </Link>
           </div>

@@ -21,7 +21,7 @@ const stagger = {
 
 export default function About() {
   return (
-    <section id="about" className="py-28 bg-sand dark:bg-stone-950 overflow-hidden">
+    <section id="about" className="py-28 bg-sand dark:bg-stone-950">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <SectionLabel>About</SectionLabel>
 
@@ -34,14 +34,29 @@ export default function About() {
         >
           {/* Narrative */}
           <motion.div variants={fadeUp} className="lg:col-span-3">
-            <h2 className="font-display text-4xl lg:text-5xl font-bold text-ink dark:text-stone-100 leading-[1.1] mb-8 tracking-tight">
-              Building<br />
-              <span className="text-rust">human‑centric</span><br />
-              AI.
+            <h2 className="font-display font-bold tracking-tight mb-8">
+              <span
+                className="text-ink dark:text-stone-100 block"
+                style={{ fontSize: 'clamp(2rem, 4.5vw, 3.75rem)', lineHeight: 1.05 }}
+              >
+                Building
+              </span>
+              <span
+                className="text-rust block"
+                style={{ fontSize: 'clamp(2rem, 4.5vw, 3.75rem)', lineHeight: 1.05 }}
+              >
+                human-centric
+              </span>
+              <span
+                className="text-ink dark:text-stone-100 block"
+                style={{ fontSize: 'clamp(3rem, 7vw, 5.75rem)', lineHeight: 0.93 }}
+              >
+                AI.
+              </span>
             </h2>
 
-            <p className="font-sans text-lg text-muted dark:text-stone-400 leading-relaxed mb-8 max-w-lg">
-              I build AI systems for institutions where decisions have real consequences: governments, universities, enterprises. Less interested in "can we automate it?" and more in "should we?"
+            <p className="font-sans text-base text-muted dark:text-stone-400 leading-relaxed mb-8 max-w-sm">
+              AI for governments, universities, and enterprises. Not "can we automate it?" — "should we?"
             </p>
 
             <motion.div variants={stagger} className="mt-10">
